@@ -10,7 +10,7 @@ FROM debian:stretch-slim
 
 # Set java enviroment
 ENV LANG=C.UTF-8 \
-	JAVA_MAJOR_VERSION=10 \
+	JAVA_MAJOR_VERSION=11 \
 	JAVA_MINOR_VERSION=0 \
 	JAVA_UPDATE=2 \
 	JAVA_BUILD=13 \

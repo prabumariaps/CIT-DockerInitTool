@@ -4,6 +4,8 @@ import logging as lg
 client = docker.DockerClient(base_url='unix://var/run/docker.sock')
 
 
+
+
 def buildImage(dockerfile="", imageName="", buildargs="", fileShellname="setup.sh"):
     try:
         (image, logs) = client.images.build(path="src", dockerfile=dockerfile, tag=imageName,
@@ -20,6 +22,6 @@ def buildImage(dockerfile="", imageName="", buildargs="", fileShellname="setup.s
         print(vars(image))
 
 
-buildImage(dockerfile="java_dockerfile", imageName="javaimage")
+buildImage(dockerfile="Dockerfile", imageName="javaimage")
 
 client.close()
