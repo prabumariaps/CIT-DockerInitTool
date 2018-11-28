@@ -1,0 +1,8 @@
+[submodule "examble/simple-java-maven-app"]
+	url = https://github.com/jenkins-docs/simple-java-maven-app.git
+[submodule "examble/simple-node-js-react-npm-app"]
+	url = https://github.com/jenkins-docs/simple-node-js-react-npm-app.git
+[submodule "examble/simple-php-website"]
+	url = https://github.com/banago/simple-php-website.git
+[submodule "examble/simple-python-pyinstaller-app"]
+	url = https://github.com/jenkins-docs/simple-python-pyinstaller-app.git
