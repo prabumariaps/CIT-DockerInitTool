@@ -7,26 +7,30 @@ pipeline {
         }
     }
     stages {
-        dir('examble/simple-java-maven-app'){
-            stage('Build') {
-                steps {
-                    sh 'mvn -B -DskipTests clean package'
+        stage('Build') {
+            steps {
+                dir('examble/simple-java-maven-app'){
+                            sh 'mvn -B -DskipTests clean package'
                 }
             }
-            stage('Test') {
-                steps {
+        }
+        stage('Test') {
+            steps {
+                dir('examble/simple-java-maven-app'){
                     sh 'mvn test'
                 }
-                post {
-                    always {
+            }
+            post {
+                always {
+                    dir('examble/simple-java-maven-app'){
                         junit 'target/surefire-reports/*.xml'
                     }
                 }
             }
-            stage('Artifact') {
-                steps {
-                    echo "Work!"
-                }
+        }
+        stage('Artifact') {
+            steps {
+                echo "Work!"
             }
         }
     }
