@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             agent {
-                agent any
+                agent none
             }
             steps {
                 def userInput = input(
