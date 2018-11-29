@@ -13,8 +13,9 @@ pipeline {
             steps {
                 dir('examble/simple-node-js-react-npm-app'){
                     sh '''
-                    npm config set proxy http://10.10.10.10:8080
-                    npm config set https-proxy http://10.10.10.10:8080
+                    npm config set proxy http://192.168.101.137:8080
+                    npm config set https-proxy http://192.168.101.137:8080
+                    npm config set registry http://registry.npmjs.org
                     '''
                     sh 'npm install'
                 }
@@ -31,7 +32,6 @@ pipeline {
             steps {
                 dir('examble/simple-node-js-react-npm-app'){
                     sh './jenkins/scripts/deliver.sh'
-                    input message: 'Finished using the web site? (Click "Proceed" to continue)'
                     sh './jenkins/scripts/kill.sh'
                 }
             }
