@@ -3,7 +3,9 @@ pipeline {
     stages {
         stage('Build') {
             agent {
-                agent none
+                docker {
+                    image 'ubuntu'
+                }
             }
             steps {
                 def userInput = input(
