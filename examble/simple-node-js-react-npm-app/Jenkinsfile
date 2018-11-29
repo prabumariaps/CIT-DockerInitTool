@@ -13,8 +13,9 @@ pipeline {
             steps {
                 dir('examble/simple-node-js-react-npm-app'){
                     sh '''
-                    npm config set proxy http://192.168.101.137:8080
-                    npm config set https-proxy http://192.168.101.137:8080
+                    npm config set proxy http://10.10.10.10:8080
+                    npm config set https-proxy http://10.10.10.10:8080
+                    npm config set strict-ssl false
                     npm config set registry http://registry.npmjs.org
                     '''
                     sh 'npm install'
