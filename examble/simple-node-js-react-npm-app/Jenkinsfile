@@ -25,15 +25,15 @@ pipeline {
         stage('Test') {
             steps {
                 dir('examble/simple-node-js-react-npm-app'){
-                    sh './jenkins/scripts/test.sh'
+                    sh 'sh ./jenkins/scripts/test.sh'
                 }
             }
         }
         stage('Deliver') {
             steps {
                 dir('examble/simple-node-js-react-npm-app'){
-                    sh './jenkins/scripts/deliver.sh'
-                    sh './jenkins/scripts/kill.sh'
+                    sh 'sh ./jenkins/scripts/deliver.sh'
+                    sh 'sh ./jenkins/scripts/kill.sh'
                 }
             }
         }
