@@ -12,6 +12,10 @@ pipeline {
         stage('Build') {
             steps {
                 dir('examble/simple-node-js-react-npm-app'){
+                    sh '''
+                    npm config set proxy http://10.10.10.10:8080
+                    npm config set https-proxy http://10.10.10.10:8080
+                    '''
                     sh 'npm install'
                 }
             }
