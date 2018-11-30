@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-cd ./web || exit
-if ! ls *.php -l | wc -l || false; then
+# cd ./web || true
+if [ "$(ls ./web/*.php -l | wc -l)" -ge "0" ]; then
     echo "PHP Work!"
 fi
 
-cd ./python || exit
-if ! ls *.py -l | wc -l || false; then
+# cd ./python || true
+if [ "$(ls ./python/*.py -l | wc -l)" -ge "0" ]; then
     echo "Python Work!"
 fi
 
-cd ./java || exit
-if ! ls *.java -l | wc -l || false; then
+# cd ./java || true
+if [ "$(ls ./java/*.war -l | wc -l)" -ge "0" ]; then
     echo "Java Work!"
 fi
