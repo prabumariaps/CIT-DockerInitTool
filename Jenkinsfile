@@ -9,7 +9,7 @@ pipeline {
             }
             steps {
                 sh """
-                    mkdir package
+                    mkdir package || true
                     cp -R ./code ./package/code
                     cp -R ./installer ./package/installer
                     cp -R ./src ./package/src
