@@ -246,10 +246,7 @@ do_install_dockercompose(){
 
 set_proxy() {
     sudo mkdir -p /etc/systemd/system/docker.service.d || true
-    echo `cat << EOF
-[Service] \n
-Environment="HTTP_PROXY=http://10.10.10.10:8080/"
-EOF` > /etc/systemd/system/docker.service.d/http-proxy.conf
+    sudo cp installer/http-proxy.conf /etc/systemd/system/docker.service.d/http-proxy.conf
 }
 
 start_services(){
