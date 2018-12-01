@@ -244,6 +244,14 @@ do_install_dockercompose(){
     sudo docker-compose --version
 }
 
+set_proxy() {
+    sudo mkdir -p /etc/systemd/system/docker.service.d || true
+    echo `cat << EOF
+[Service]
+Environment="HTTP_PROXY=http://10.10.10.10:8080/"
+EOF` > /etc/systemd/system/docker.service.d/http-proxy.conf
+}
+
 start_services(){
     sudo systemctl start docker
     sudo systemctl enable docker
@@ -523,6 +531,7 @@ do_install() {
 				$sh_c "$pkg_manager install -y -q docker-ce$pkg_version"
 			)
 			echo_docker_as_nonroot
+            set_proxy
 			start_services
 			do_install_dockercompose
 			exit 0
