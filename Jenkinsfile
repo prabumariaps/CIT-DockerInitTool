@@ -9,10 +9,10 @@ pipeline {
             }
             steps {
                 sh """
-                    tar -zcvf package.tar.gz ./
+                    tar -zcvf ../package.tar.gz ./
                 """
 
-                archiveArtifacts "package.tar.gz"
+                archiveArtifacts "../package.tar.gz"
             }
         }
         stage('Script Installer') {
