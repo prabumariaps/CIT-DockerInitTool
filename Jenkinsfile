@@ -1,20 +1,28 @@
 pipeline {
     agent none
     stages {
-        stage('Build') {
+        stage('Package') {
             agent {
                 docker {
                     image 'ubuntu'
                 }
             }
             steps {
-                script {
-                    def doesJavaRock = input(message: 'Do you like Java?', ok: 'Yes',
-                        parameters: [booleanParam(defaultValue: true,
-                        description: 'If you like Java, just push the button',name: 'Yes?')])
+                sh """
+                    tar -zcvf package.tar.gz ./
+                """
 
-                    echo "Java rocks?:" + doesJavaRock
+                archiveArtifacts "package.tar.gz"
+            }
+        }
+        stage('Script Installer') {
+            agent {
+                docker {
+                    image 'ubuntu'
                 }
+            }
+            steps {
+                archiveArtifacts "installer/installer.sh"
             }
         }
     }
