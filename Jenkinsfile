@@ -13,7 +13,8 @@ pipeline {
                     cp -R ./code ./package/code
                     cp -R ./installer ./package/installer
                     cp -R ./src ./package/src
-                    tar -zcvf package.tar.gz ./package/
+                    cd ./package
+                    tar -zcvf ../package.tar.gz ./
                 """
 
                 archiveArtifacts "package.tar.gz"
