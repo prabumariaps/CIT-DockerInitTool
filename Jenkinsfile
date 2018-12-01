@@ -9,10 +9,14 @@ pipeline {
             }
             steps {
                 sh """
-                    tar -zcvf ../package.tar.gz ./
+                    mkdir package
+                    cp -R ./code ./package/code
+                    cp -R ./installer ./package/installer
+                    cp -R ./src ./package/src
+                    tar -zcvf package.tar.gz ./package/
                 """
 
-                archiveArtifacts "../package.tar.gz"
+                archiveArtifacts "package.tar.gz"
             }
         }
         stage('Script Installer') {
