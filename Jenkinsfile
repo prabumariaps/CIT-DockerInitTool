@@ -29,6 +29,11 @@ pipeline {
             steps {
                 archiveArtifacts "installer/installer.sh"
             }
+            post {
+                always {
+                    sh "rm -rf *"
+                }
+            }
         }
     }
 }
