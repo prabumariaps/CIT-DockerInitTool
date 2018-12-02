@@ -48,10 +48,9 @@ pipeline {
             }
             steps {
                 sh """
-                    cp -R examble/devops-project-samples/python/flask/webapp/Application/*.* code/python/
-                    cd code/python
-                    ls -l
+                    tar -zcvf python_code.tar.gz examble/devops-project-samples/python/flask/webapp/Application/
                 """
+                archiveArtifacts "python_code.tar.gz"
             }
         }
 
@@ -64,6 +63,8 @@ pipeline {
             steps {
                 unarchive mapping: ['build/bin/cdaemon': 'runc']
                 unarchive mapping: ['target/*.jar': 'myapp.jar']
+                unarchive mapping: ['python_code.tar.gz': 'python_code.tar.gz']
+                sh "tar -xzvf python_code.tar.gz"
                 sh "ls -l"
             }
         }
