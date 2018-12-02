@@ -16,8 +16,10 @@ pipeline {
                         cmake -DCMAKE_INSTALL_PREFIX=/usr ../
                         make
                         find -name "daemon"
+                        cd bin
+                        mv daemon cdaemon
                     """
-                    archiveArtifacts "build/bin/daemon"
+                    archiveArtifacts "build/bin/cdaemon"
                 }
             }
         }
