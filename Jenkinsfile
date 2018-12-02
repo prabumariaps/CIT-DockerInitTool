@@ -11,11 +11,11 @@ pipeline {
             steps {
                 dir("examble/daemon"){
                     sh """
-                        mkdir build
+                        mkdir build || true
                         cd build
                         cmake -DCMAKE_INSTALL_PREFIX=/usr ../
                         make
-                        sudo make install
+                        find -name "daemon"
                     """
                     archiveArtifacts "build/bin/daemon"
                 }
