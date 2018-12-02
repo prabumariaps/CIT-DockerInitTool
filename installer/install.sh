@@ -252,7 +252,6 @@ set_proxy() {
 start_services(){
     sudo systemctl start docker
     sudo systemctl enable docker
-    sudo systemctl restart docker
 }
 
 do_install() {
