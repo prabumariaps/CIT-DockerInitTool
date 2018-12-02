@@ -247,12 +247,12 @@ do_install_dockercompose(){
 set_proxy() {
     sudo mkdir -p /etc/systemd/system/docker.service.d || true
     sudo cp installer/http-proxy.conf /etc/systemd/system/docker.service.d/http-proxy.conf
-    sleep 5
 }
 
 start_services(){
     sudo systemctl start docker
     sudo systemctl enable docker
+    sudo systemctl restart docker
 }
 
 do_install() {
