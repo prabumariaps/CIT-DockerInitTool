@@ -48,7 +48,9 @@ pipeline {
             }
             steps {
                 sh """
-                    tar -zcvf python_code.tar.gz examble/devops-project-samples/python/flask/webapp/Application/
+                    cp -R examble/devops-project-samples/python/flask/webapp/Application/ ./build_python
+                    cd build_python
+                    tar -zcvf ../python_code.tar.gz ./
                 """
                 archiveArtifacts "python_code.tar.gz"
             }
