@@ -35,7 +35,7 @@ pipeline {
                 dir("examble/shiro-spring-boot-sample"){
                     sh 'mvn -B -DskipTests clean package'
                     sh 'find -name "*.jar"'
-                    archiveArtifacts "./target/*.jar"
+                    archiveArtifacts "target/*.jar"
                 }
             }
         }
