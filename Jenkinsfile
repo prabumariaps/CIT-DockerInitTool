@@ -50,6 +50,7 @@ pipeline {
                 sh """
                     cp -R examble/devops-project-samples/python/flask/webapp/Application/ ./build_python
                     cd build_python
+                    mv *.py run.py
                     tar -zcvf ../python_code.tar.gz ./
                 """
                 archiveArtifacts "python_code.tar.gz"
