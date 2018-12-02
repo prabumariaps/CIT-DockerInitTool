@@ -40,6 +40,22 @@ pipeline {
             }
         }
 
+        stage('Build Python') {
+            agent {
+                docker {
+                    image 'ubuntu'
+                }
+            }
+            steps {
+                sh """
+                    cp -R examble/devops-project-samples/python/flask/webapp/Application/ code/python
+                    cd code/python
+                    mv *.py run.py
+                    ls -l
+                """
+            }
+        }
+
         stage('Copy Artifacts') {
             agent {
                 docker {
