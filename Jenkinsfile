@@ -24,6 +24,20 @@ pipeline {
             }
         }
 
+        stage('Build Java') {
+            agent {
+                docker {
+                    image 'maven:3-alpine'
+                    args '-v /root/.m2:/root/.m2'
+                }
+            }
+            steps {
+                dir("examble/shiro-spring-boot-sample"){
+                    sh 'mvn -B -DskipTests clean package'
+                    // archiveArtifacts "build/bin/cdaemon"
+                }
+            }
+        }
 
         stage('Copy Artifacts') {
             agent {
