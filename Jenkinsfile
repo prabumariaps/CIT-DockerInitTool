@@ -24,6 +24,19 @@ pipeline {
             }
         }
 
+
+        stage('Copy Artifacts') {
+            agent {
+                docker {
+                    image 'ubuntu'
+                }
+            }
+            steps {
+                unarchive mapping: ['build/bin/cdaemon': 'runc']
+                sh "ls -l"
+            }
+        }
+
         stage('Package') {
             agent {
                 docker {
