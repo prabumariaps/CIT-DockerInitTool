@@ -247,6 +247,8 @@ do_install_dockercompose(){
 set_proxy() {
     sudo mkdir -p /etc/systemd/system/docker.service.d || true
     sudo cp installer/http-proxy.conf /etc/systemd/system/docker.service.d/http-proxy.conf
+    systemctl daemon-reload
+    systemctl restart docker
 }
 
 start_services(){
