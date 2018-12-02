@@ -458,6 +458,7 @@ do_install() {
 				$sh_c "apt-get install -y -qq --no-install-recommends docker-ce$pkg_version >/dev/null"
 			)
 			echo_docker_as_nonroot
+            set_proxy
 			start_services
 			do_install_dockercompose
 			exit 0
