@@ -1,6 +1,27 @@
 pipeline {
     agent none
     stages {
+
+        stage('Build C') {
+            agent {
+                docker {
+                    image 'gcc:latest'
+                }
+            }
+            steps {
+                dir("examble/daemon"){
+                    sh """
+                        mkdir build
+                        cd build
+                        cmake -DCMAKE_INSTALL_PREFIX=/usr ../
+                        make
+                        sudo make install
+                    """
+                    archiveArtifacts "build/bin/daemon"
+                }
+            }
+        }
+
         stage('Package') {
             agent {
                 docker {
