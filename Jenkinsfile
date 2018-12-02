@@ -48,7 +48,7 @@ pipeline {
             }
             steps {
                 unarchive mapping: ['build/bin/cdaemon': 'runc']
-                unarchive mapping: ['./target/*.jar': 'myapp.jar']
+                unarchive mapping: ['target/*.jar': 'myapp.jar']
                 sh "ls -l"
             }
         }
