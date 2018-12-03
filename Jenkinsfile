@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
 
-        stage('Build C') {
+        stage('Build C Package') {
             agent {
                 docker {
                     image 'rikorose/gcc-cmake:latest'
@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Build Java') {
+        stage('Build Java Package') {
             agent {
                 docker {
                     image 'maven:3-alpine'
@@ -40,7 +40,7 @@ pipeline {
             }
         }
 
-        stage('Build Python') {
+        stage('Build Python Package') {
             agent {
                 docker {
                     image 'ubuntu'
@@ -57,6 +57,22 @@ pipeline {
             }
         }
 
+        stage('Build PHP Package') {
+            agent {
+                docker {
+                    image 'ubuntu'
+                }
+            }
+            steps {
+                sh """
+                    cp -R examble/simple-php-website ./build_PHP
+                    cd build_PHP
+                    tar -zcvf ../php_code.tar.gz ./
+                """
+                archiveArtifacts "php_code.tar.gz"
+            }
+        }
+
         stage('Copy Artifacts') {
             agent {
                 docker {
@@ -67,7 +83,8 @@ pipeline {
                 unarchive mapping: ['build/bin/cdaemon': 'runc']
                 unarchive mapping: ['target/*.jar': 'myapp.jar']
                 unarchive mapping: ['python_code.tar.gz': 'python_code.tar.gz']
-                sh "tar -xzvf python_code.tar.gz"
+                unarchive mapping: ['php_code.tar.gz': 'php_code.tar.gz']
+                // sh "tar -xzvf python_code.tar.gz"
                 sh "ls -l"
             }
         }
@@ -91,6 +108,7 @@ pipeline {
                 archiveArtifacts "package.tar.gz"
             }
         }
+
         stage('Script Installer') {
             agent {
                 docker {
