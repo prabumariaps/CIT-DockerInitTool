@@ -109,6 +109,17 @@ pipeline {
             }
         }
 
+        stage('Auto Deploy') {
+            agent {
+                docker {
+                    image 'ubuntu'
+                }
+            }
+            steps {
+                sh "echo \" Work! \""
+            }
+        }
+
         stage('Script Installer') {
             agent {
                 docker {
