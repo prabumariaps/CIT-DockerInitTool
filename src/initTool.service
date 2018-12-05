@@ -1,0 +1,14 @@
+[Unit]
+Description=Init Docker Tool
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/initTool/
+ExecStart=/opt/initTool/startInit.sh
+Restart=on-failure
+
+
+[Install]
+WantedBy=multi-user.target
