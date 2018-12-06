@@ -112,12 +112,13 @@ pipeline {
             agent {
                 docker {
                     image 'centos'
-                    args '-v /root/.ssh:/root/.ssh'
+                    args '-v /root/.ssh:/root/.ssh -v /etc/yum.conf:/etc/yum.conf'
                 }
             }
             steps {
                 sh """
                 ls -l
+                sudo yum install openssh-clients -y
                 ssh -q root@192.168.101.199 << EOF
     echo "test"
 EOF
