@@ -140,11 +140,7 @@ EOF
             }
             steps {
                 archiveArtifacts "installer/installer.sh"
-            }
-        }
-        post {
-            always {
-                cleanWs()
+                sh "rm -rf ./"
             }
         }
     }
