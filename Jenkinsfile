@@ -142,10 +142,10 @@ EOF
                 archiveArtifacts "installer/installer.sh"
             }
         }
-    }
-    post {
-        always {
-            cleanWs()
+        post {
+            always {
+                cleanWs()
+            }
         }
     }
 }
