@@ -79,11 +79,20 @@ pipeline {
                 }
             }
             steps {
-                unarchive mapping: ['build/bin/cdaemon': 'runc']
-                unarchive mapping: ['target/*.jar': 'myapp.jar']
-                unarchive mapping: ['python_code.tar.gz': 'python_code.tar.gz']
-                unarchive mapping: ['php_code.tar.gz': 'php_code.tar.gz']
-                // sh "tar -xzvf python_code.tar.gz"
+                dir("code/gcc"){
+                    unarchive mapping: ['build/bin/cdaemon': 'myapp']
+                }
+                dir("code/java"){
+                    unarchive mapping: ['target/*.jar': 'myapp.jar']
+                }
+                dir("code/python"){
+                    unarchive mapping: ['python_code.tar.gz': 'python_code.tar.gz']
+                    sh "tar -xzvf python_code.tar.gz"
+                }
+                dir("code/web"){
+                    unarchive mapping: ['php_code.tar.gz': 'php_code.tar.gz']
+                    sh "tar -xzvf php_code.tar.gz"
+                }
                 sh "ls -l"
             }
         }

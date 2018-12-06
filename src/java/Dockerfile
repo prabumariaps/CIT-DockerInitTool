@@ -58,3 +58,6 @@ RUN cd /tmp \
 
 # Add java to path
 ENV PATH $PATH:$JAVA_HOME/bin
+
+WORKDIR /usr/src/myapp
+ENTRYPOINT ["java","-jar","myapp.jar"]
