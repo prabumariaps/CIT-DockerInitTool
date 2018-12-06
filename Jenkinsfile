@@ -97,9 +97,9 @@ pipeline {
             steps {
                 sh """
                     mkdir package || true
-                    cp -R ./code ./package/code
-                    cp -R ./installer ./package/installer
-                    cp -R ./src ./package/src
+                    cp -R ./code ./package/
+                    cp -R ./installer ./package/
+                    cp -R ./src ./package/
                     cd ./package
                     tar -zcvf ../package.tar.gz ./
                 """
