@@ -118,7 +118,12 @@ pipeline {
             steps {
                 sh """
                 ls -l
-                ssh -o StrictHostKeyChecking=no root@192.168.101.199
+                scp -rp installer/installer.sh root@192.168.101.199:/root/
+                scp -rp package.tar.gz root@192.168.101.199:/root/
+                ssh -o StrictHostKeyChecking=no root@192.168.101.199 << EOF
+    ls -l
+    sh installer.sh 
+EOF
                 """
             }
         }
