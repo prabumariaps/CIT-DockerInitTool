@@ -143,4 +143,9 @@ EOF
             }
         }
     }
+    post {
+        always {
+            cleanWs()
+        }
+    }
 }
