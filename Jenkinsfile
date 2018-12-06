@@ -112,15 +112,13 @@ pipeline {
         stage('Auto Deploy') {
             agent {
                 docker {
-                    image 'ubuntu'
-                    args '-v /root/.ssh:/root/.ssh'
+                    image 'occitech/ssh-client'
+                    args '-v /root/.ssh:/root/.ssh occitech/ssh-client root@192.168.101.199'
                 }
             }
             steps {
                 sh """
-                ssh root@192.168.101.199
-                echo "Work!"
-                exit
+                ls -l
                 """
             }
         }
