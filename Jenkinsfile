@@ -112,12 +112,13 @@ pipeline {
             agent {
                 docker {
                     image 'occitech/ssh-client'
-                    args '-v /root/.ssh:/root/.ssh occitech/ssh-client root@192.168.101.199'
+                    args '-v /root/.ssh:/root/.ssh'
                 }
             }
             steps {
                 sh """
                 ls -l
+                ssh -o StrictHostKeyChecking=no root@192.168.101.199
                 """
             }
         }
