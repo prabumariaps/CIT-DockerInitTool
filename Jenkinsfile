@@ -1,7 +1,6 @@
 pipeline {
     agent none
     stages {
-
         stage('Build C Package') {
             agent {
                 docker {
@@ -50,7 +49,7 @@ pipeline {
                 sh """
                     cp -R examble/devops-project-samples/python/flask/webapp/Application/ ./build_python
                     cd build_python
-                    mv *.py run.py
+                    mv *.py run.py | true
                     tar -zcvf ../python_code.tar.gz ./
                 """
                 archiveArtifacts "python_code.tar.gz"
@@ -131,11 +130,6 @@ pipeline {
             }
             steps {
                 archiveArtifacts "installer/installer.sh"
-            }
-            post {
-                always {
-                    sh "rm -rf *"
-                }
             }
         }
     }
