@@ -121,8 +121,14 @@ pipeline {
                 scp -rp installer/installer.sh root@192.168.101.199:/root/
                 scp -rp package.tar.gz root@192.168.101.199:/root/
                 ssh -o StrictHostKeyChecking=no root@192.168.101.199 << EOF
+    export http_proxy=http://10.10.10.10:8080
+    export https_proxy=$http_proxy
+    export ftp_proxy=$http_proxy
+    export HTTP_PROXY=$http_proxy
+    export HTTPS_PROXY=$http_proxy
+    export FTP_PROXY=$http_proxy
     ls -l
-    sh installer.sh 
+    sh installer.sh
 EOF
                 """
             }
