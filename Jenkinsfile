@@ -118,7 +118,7 @@ pipeline {
             steps {
                 sh """
                 ls -l
-                sudo yum install openssh-clients -y
+                yum install openssh-clients -y
                 ssh -q root@192.168.101.199 << EOF
     echo "test"
 EOF
