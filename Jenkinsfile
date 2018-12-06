@@ -113,10 +113,15 @@ pipeline {
             agent {
                 docker {
                     image 'ubuntu'
+                    args '-v /root/.ssh:/root/.ssh'
                 }
             }
             steps {
-                sh "echo \" Work! \""
+                sh """
+                ssh root@192.168.101.199
+                echo "Work!"
+                exit
+                """
             }
         }
 
