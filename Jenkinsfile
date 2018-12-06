@@ -111,7 +111,7 @@ pipeline {
         stage('Auto Deploy') {
             agent {
                 docker {
-                    image 'occitech/ssh-client'
+                    image 'centos'
                     args '-v /root/.ssh:/root/.ssh'
                 }
             }
