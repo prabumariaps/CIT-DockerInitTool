@@ -13,7 +13,7 @@ services:
     restart: always
     volumes:
       - ../code/java:/usr/src/myapp
-      - /etc/yum.conf:/etc/yum.conf:ro
+      - /etc/yum.conf:/etc/yum.conf
     working_dir: /usr/src/myapp
     entrypoint:
         - java
