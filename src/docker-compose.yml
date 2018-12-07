@@ -5,7 +5,7 @@ services:
     build: gcc
     restart: always
     volumes:
-      - ../code/gcc:/usr/src/myapp
+      - ../code/gcc/:/usr/src/myapp/
     network_mode: "host"
 
   java:
