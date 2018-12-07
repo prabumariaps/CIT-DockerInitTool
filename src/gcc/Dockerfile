@@ -2,4 +2,5 @@ FROM gcc:latest
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 # RUN sh run.sh
-ENTRYPOINT ["./myapp"]
+RUN chmod 777 myapp
+ENTRYPOINT ["myapp"]
