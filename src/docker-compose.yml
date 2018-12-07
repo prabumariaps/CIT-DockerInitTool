@@ -1,12 +1,12 @@
 version: '3'
 services:
 
-  # gcc:
-  #   build: gcc
-  #   restart: always
-  #   volumes:
-  #     - ../code/gcc/:/usr/src/myapp/
-  #   network_mode: "host"
+  gcc:
+    build: gcc
+    restart: always
+    volumes:
+      - ../code/gcc/:/usr/src/myapp/
+    network_mode: "host"
 
   java:
     build: java

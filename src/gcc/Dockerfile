@@ -1,4 +1,4 @@
-FROM gcc:latest
+FROM ubuntu:latest
 WORKDIR /usr/src/myapp
 COPY ./ ./
 RUN ls -l
