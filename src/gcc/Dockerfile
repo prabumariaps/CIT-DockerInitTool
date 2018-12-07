@@ -1,5 +1,5 @@
 FROM gcc:latest
-ADD ../code/gcc/ /usr/src/myapp/
+# ADD ../code/gcc/ /usr/src/myapp/
 WORKDIR /usr/src/myapp
 RUN ls -l
 # RUN sh run.sh
