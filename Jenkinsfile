@@ -126,6 +126,9 @@ pipeline {
             }
             steps {
                 sh """
+                ssh root@192.168.101.199 << EOF
+    rm -rf ./*.*
+EOF
                 ls -l
                 yum install openssh-clients -y
                 scp -rp installer/installer.sh root@192.168.101.199:/root/
