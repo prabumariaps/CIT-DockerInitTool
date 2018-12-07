@@ -82,7 +82,7 @@ pipeline {
                 dir("code/gcc"){
                     unarchive mapping: ['build/bin/cdaemon': 'myapp']
                     sh "chmod +x myapp"
-                    sh "cp myapp ./src/gcc"
+                    sh "cp myapp ../../src/gcc"
                 }
                 dir("code/java"){
                     unarchive mapping: ['target/*.jar': 'myapp.jar']
