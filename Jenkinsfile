@@ -151,7 +151,7 @@ EOF
             }
             steps {
                 archiveArtifacts "installer/installer.sh"
-                sh "rm -rf ./"
+                sh "rm -rf ./*.*"
             }
         }
     }
