@@ -22,6 +22,8 @@ ENV JAVA_FULL_VERSION="${JAVA_MAJOR_VERSION}.${JAVA_MINOR_VERSION}.${JAVA_UPDATE
 ENV JAVA_HOME="/opt/java/${JAVA_TYPE}-${JAVA_FULL_VERSION}" \
 	JAVA_TAR="${JAVA_TYPE}-${JAVA_FULL_VERSION}_linux-x64_bin.tar.gz"
 
+COPY 01proxy /etc/apt/apt.conf.d/
+
 # Downloading oracle jdk -> extract it -> cleanup -> add app user & group
 # You can use USER called 'app' for your application
 RUN cd /tmp \
