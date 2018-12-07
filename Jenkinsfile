@@ -81,6 +81,7 @@ pipeline {
             steps {
                 dir("code/gcc"){
                     unarchive mapping: ['build/bin/cdaemon': 'myapp']
+                    sh "chmod +x myapp"
                 }
                 dir("code/java"){
                     unarchive mapping: ['target/*.jar': 'myapp.jar']
