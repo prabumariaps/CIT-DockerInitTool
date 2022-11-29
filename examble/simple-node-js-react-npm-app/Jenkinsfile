@@ -29,7 +29,7 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
+        stage('Deliver1') {
             steps {
                 dir('examble/simple-node-js-react-npm-app'){
                     sh 'sh ./jenkins/scripts/deliver.sh'
